@@ -232,7 +232,7 @@ export default function AdminDashboard({ onNavigate }) {
               <p className="text-gray-500 text-sm" style={{ fontFamily: "'DM Sans', sans-serif" }}>View and manage all client-uploaded files.</p>
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-8">
-              {[{ label: 'Total Clients', value: clientListFromFilesArr.length }, { label: 'Total Files', value: files.length }, { label: 'Total Storage', value: formatBytes(files.reduce((a, f) => a + (f.size || 0), 0)) }].map(s => (
+              {[{ label: 'Total Clients', value: clientList.length }, { label: 'Total Files', value: files.length }, { label: 'Total Storage', value: formatBytes(files.reduce((a, f) => a + (f.size || 0), 0)) }].map(s => (
                 <div key={s.label} className="bg-white rounded-2xl border border-gray-100 px-5 py-4">
                   <p className="text-xs text-gray-400 mb-1" style={{ fontFamily: "'DM Sans', sans-serif" }}>{s.label}</p>
                   <p className="text-2xl font-bold text-gray-900" style={{ fontFamily: "'Playfair Display', serif" }}>{s.value}</p>
