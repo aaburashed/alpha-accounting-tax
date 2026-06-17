@@ -39,7 +39,7 @@ function VerifyEmailScreen({ email, password, onNavigate }) {
     setResending(true); setResendError('');
     try {
       const cred = await signInWithEmailAndPassword(auth, email, password);
-      await sendEmailVerification(cred.user);
+      await sendEmailVerification(cred.user, { url: 'https://alphaaccountingandtax.com/?verified=true', handleCodeInApp: false });
       await signOut(auth);
       setResent(true); setTimeout(() => setResent(false), 4000);
     } catch (err) { setResendError(err.code === 'auth/too-many-requests' ? 'Too many requests. Please wait a few minutes.' : 'Could not resend email. Please try again.');
