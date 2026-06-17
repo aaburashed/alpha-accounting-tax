@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { auth } from '../firebase';
+import { auth } from './firebase';
 import { applyActionCode } from 'firebase/auth';
 
 export default function EmailAction({ onNavigate }) {
