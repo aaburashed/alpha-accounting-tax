@@ -12,11 +12,11 @@ import Register from './pages/Register';
 import ForgotPassword from './pages/ForgotPassword';
 import ClientDashboard from './pages/ClientDashboard';
 import AdminDashboard from './pages/AdminDashboard';
+import EmailAction from './pages/EmailAction';
 import { FaInstagram, FaFacebook, FaLinkedin, FaWhatsapp } from 'react-icons/fa';
 
 const SERIF = "'Cormorant Garamond', serif";
 const SANS = "'Outfit', sans-serif";
-
 const socialLinks = [
   { label: 'Instagram', href: 'https://www.instagram.com/alphaaccountingandtax/', icon: FaInstagram, hoverColor: '#E1306C' },
   { label: 'Facebook', href: 'https://www.facebook.com/people/Alpha-Accounting-and-Tax/100090563133568/', icon: FaFacebook, hoverColor: '#1877F2' },
@@ -28,24 +28,10 @@ function SocialIcons({ className = '' }) {
   return (
     <div className={`flex items-center gap-3 ${className}`}>
       {socialLinks.map(({ label, href, icon: Icon, hoverColor }) => (
-        <a
-          key={label}
-          href={href}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={label}
+        <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}
           className="w-8 h-8 rounded-full flex items-center justify-center text-gray-400 border border-gray-700 transition-all duration-200"
-          onMouseEnter={e => {
-            e.currentTarget.style.color = hoverColor;
-            e.currentTarget.style.borderColor = hoverColor;
-            e.currentTarget.style.backgroundColor = `${hoverColor}18`;
-          }}
-          onMouseLeave={e => {
-            e.currentTarget.style.color = '';
-            e.currentTarget.style.borderColor = '';
-            e.currentTarget.style.backgroundColor = '';
-          }}
-        >
+          onMouseEnter={e => { e.currentTarget.style.color = hoverColor; e.currentTarget.style.borderColor = hoverColor; e.currentTarget.style.backgroundColor = `${hoverColor}18`; }}
+          onMouseLeave={e => { e.currentTarget.style.color = ''; e.currentTarget.style.borderColor = ''; e.currentTarget.style.backgroundColor = ''; }}>
           <Icon size={15} />
         </a>
       ))}
@@ -74,9 +60,7 @@ function Footer({ onNavigate }) {
             <h4 className="text-white font-semibold text-sm mb-4" style={{ fontFamily: SERIF, fontSize: '16px' }}>Services</h4>
             <ul className="flex flex-col gap-2">
               {["Tax Preparation", "Bookkeeping", "Payroll Services", "Business Formation", "IRS Representation", "Tax Planning"].map((s) => (
-                <li key={s}>
-                  <a href="#services" className="text-gray-400 text-sm transition-colors hover:text-white" style={{ fontFamily: SANS }}>{s}</a>
-                </li>
+                <li key={s}><a href="#services" className="text-gray-400 text-sm transition-colors hover:text-white" style={{ fontFamily: SANS }}>{s}</a></li>
               ))}
             </ul>
           </div>
@@ -91,9 +75,7 @@ function Footer({ onNavigate }) {
           </div>
         </div>
         <div className="border-t border-gray-800 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-gray-500 text-xs" style={{ fontFamily: SANS }}>
-            &copy; {new Date().getFullYear()} Alpha Accounting &amp; Tax. All rights reserved.
-          </p>
+          <p className="text-gray-500 text-xs" style={{ fontFamily: SANS }}>&copy; {new Date().getFullYear()} Alpha Accounting &amp; Tax. All rights reserved.</p>
           <div className="flex gap-6">
             {["Privacy Policy", "Terms of Service", "Sitemap"].map((link) => (
               <a key={link} href="#" className="text-gray-500 text-xs hover:text-gray-300 transition-colors" style={{ fontFamily: SANS }}>{link}</a>
@@ -120,12 +102,21 @@ function HomePage({ onNavigate }) {
   );
 }
 
+function getInitialPage() {
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('mode') === 'verifyEmail' && params.get('oobCode')) return 'email-action';
+  return 'home';
+}
+
 export default function App() {
-  const [page, setPage] = useState('home');
+  const [page, setPage] = useState(getInitialPage);
+
   const navigate = (to) => {
     setPage(to);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  if (page === 'email-action') return <EmailAction onNavigate={navigate} />;
   if (page === 'bookkeeping-packages') return <BookkeepingPackages onNavigate={navigate} />;
   if (page === 'login') return <Login onNavigate={navigate} />;
   if (page === 'register') return <Register onNavigate={navigate} />;
@@ -134,3 +125,4 @@ export default function App() {
   if (page === 'admin-dashboard') return <AdminDashboard onNavigate={navigate} />;
   return <HomePage onNavigate={navigate} />;
 }
+
