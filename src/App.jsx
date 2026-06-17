@@ -14,6 +14,7 @@ import ClientDashboard from './pages/ClientDashboard';
 import AdminDashboard from './pages/AdminDashboard';
 import EmailAction from './pages/EmailAction';
 import { FaInstagram, FaFacebook, FaLinkedin, FaWhatsapp } from 'react-icons/fa';
+import EmailVerified from './pages/EmailVerified';
 
 const SERIF = "'Cormorant Garamond', serif";
 const SANS = "'Outfit', sans-serif";
