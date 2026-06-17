@@ -105,6 +105,7 @@ function HomePage({ onNavigate }) {
 function getInitialPage() {
   const params = new URLSearchParams(window.location.search);
   if (params.get('mode') === 'verifyEmail' && params.get('oobCode')) return 'email-action';
+  if (params.get('verified') === 'true') return 'email-verified';
   return 'home';
 }
 
@@ -117,6 +118,7 @@ export default function App() {
   };
 
   if (page === 'email-action') return <EmailAction onNavigate={navigate} />;
+  if (page === 'email-verified') return <EmailVerified onNavigate={navigate} />;
   if (page === 'bookkeeping-packages') return <BookkeepingPackages onNavigate={navigate} />;
   if (page === 'login') return <Login onNavigate={navigate} />;
   if (page === 'register') return <Register onNavigate={navigate} />;
