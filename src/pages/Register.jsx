@@ -97,7 +97,7 @@ export default function Register({ onNavigate }) {
       try { cred = await createUserWithEmailAndPassword(auth, email, password); }
       catch (authErr) { console.error('[Register] createUser failed:', authErr.code); setError(getFirebaseErrorMessage(authErr)); setLoading(false); return; }
       try { await updateProfile(cred.user, { displayName: name }); } catch (e) { console.warn('[Register] updateProfile failed:', e.code); }
-      try { await sendEmailVerification(cred.user); } catch (e) { console.warn('[Register] sendEmailVerification failed:', e.code); }
+      try { await sendEmailVerification(cred.user, { url: 'https://alphaaccountingandtax.com/?verified=true', handleCodeInApp: false }); } catch (e) { console.warn('[Register] sendEmailVerification failed:', e.code); }
       try { await setDoc(doc(db, 'users', cred.user.uid), { uid: cred.user.uid, name, email, role: 'client', createdAt: serverTimestamp() }); } catch (e) { console.warn('[Register] Firestore write blocked:', e.code); }
       try { await signOut(auth); } catch (e) { console.warn('[Register] signOut failed:', e.code); }
       setRegisteredEmail(email); setRegisteredPassword(password); setVerifyScreen(true);
