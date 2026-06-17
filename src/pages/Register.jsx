@@ -34,6 +34,23 @@ function VerifyEmailScreen({ email, password, onNavigate }) {
   const [resending, setResending] = useState(false);
   const [resent, setResent] = useState(false);
   const [resendError, setResendError] = useState('');
+  const [signingIn, setSigningIn] = useState(false);
+
+  const handleSignIn = async () => {
+    setSigningIn(true); setResendError('');
+    try {
+      const cred = await signInWithEmailAndPassword(auth, email, password);
+      await cred.user.reload();
+      if (cred.user.emailVerified) {
+        onNavigate('client-dashboard');
+      } else {
+        await signOut(auth);
+        setResendError('Email not verified yet. Please click the link in your email first, then try again.');
+      }
+    } catch (err) {
+      setResendError('Could not sign in. Please try again.');
+    } finally { setSigningIn(false); }
+  };
 
   const handleResend = async () => {
     setResending(true); setResendError('');
@@ -42,7 +59,8 @@ function VerifyEmailScreen({ email, password, onNavigate }) {
       await sendEmailVerification(cred.user, { url: 'https://alphaaccountingandtax.com/?verified=true', handleCodeInApp: false });
       await signOut(auth);
       setResent(true); setTimeout(() => setResent(false), 4000);
-    } catch (err) { setResendError(err.code === 'auth/too-many-requests' ? 'Too many requests. Please wait a few minutes.' : 'Could not resend email. Please try again.');
+    } catch (err) {
+      setResendError(err.code === 'auth/too-many-requests' ? 'Too many requests. Please wait a few minutes.' : 'Could not resend email. Please try again.');
     } finally { setResending(false); }
   };
 
@@ -57,12 +75,16 @@ function VerifyEmailScreen({ email, password, onNavigate }) {
           <p className="text-gray-400 text-xs mb-6 leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>Click the link in that email, then come back and sign in below.</p>
           {resendError && <div className="mb-4 px-4 py-3 rounded-lg bg-red-50 border border-red-100 text-red-600 text-xs text-left" style={{ fontFamily: "'DM Sans', sans-serif" }}>{resendError}</div>}
           {resent && <div className="mb-4 px-4 py-3 rounded-lg bg-green-50 border border-green-100 text-green-700 text-xs" style={{ fontFamily: "'DM Sans', sans-serif" }}>Verification email resent successfully!</div>}
-          <button onClick={() => onNavigate('login')} className="w-full py-3 rounded-xl text-white font-semibold text-sm transition-all duration-200 mb-3"
+          <button onClick={handleSignIn} disabled={signingIn || resending}
+            className="w-full py-3 rounded-xl text-white font-semibold text-sm transition-all duration-200 mb-3 disabled:opacity-60"
             style={{ backgroundColor: '#C8102E', fontFamily: "'DM Sans', sans-serif" }}
-            onMouseEnter={e => { e.currentTarget.style.backgroundColor = '#a50d25'; }} onMouseLeave={e => { e.currentTarget.style.backgroundColor = '#C8102E'; }}>
-            I have verified — Sign In
+            onMouseEnter={e => { e.currentTarget.style.backgroundColor = '#a50d25'; }}
+            onMouseLeave={e => { e.currentTarget.style.backgroundColor = '#C8102E'; }}>
+            {signingIn ? 'Signing in...' : 'I have verified — Sign In'}
           </button>
-          <button onClick={handleResend} disabled={resending} className="w-full py-3 rounded-xl text-sm font-medium text-gray-600 bg-gray-100 hover:bg-gray-200 transition-colors disabled:opacity-60" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+          <button onClick={handleResend} disabled={resending || signingIn}
+            className="w-full py-3 rounded-xl text-sm font-medium text-gray-600 bg-gray-100 hover:bg-gray-200 transition-colors disabled:opacity-60"
+            style={{ fontFamily: "'DM Sans', sans-serif" }}>
             {resending ? 'Resending...' : 'Resend verification email'}
           </button>
           <p className="text-center text-xs text-gray-400 mt-5" style={{ fontFamily: "'DM Sans', sans-serif" }}>
