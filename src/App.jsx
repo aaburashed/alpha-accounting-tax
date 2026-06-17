@@ -12,9 +12,9 @@ import Register from './pages/Register';
 import ForgotPassword from './pages/ForgotPassword';
 import ClientDashboard from './pages/ClientDashboard';
 import AdminDashboard from './pages/AdminDashboard';
-import EmailAction from './pages/EmailAction';
+import EmailAction from './EmailAction';
 import { FaInstagram, FaFacebook, FaLinkedin, FaWhatsapp } from 'react-icons/fa';
-import EmailVerified from './pages/EmailVerified';
+import EmailVerified from './EmailVerified';
 
 const SERIF = "'Cormorant Garamond', serif";
 const SANS = "'Outfit', sans-serif";
