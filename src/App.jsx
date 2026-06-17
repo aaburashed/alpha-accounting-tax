@@ -13,11 +13,14 @@ import ForgotPassword from './pages/ForgotPassword';
 import ClientDashboard from './pages/ClientDashboard';
 import AdminDashboard from './pages/AdminDashboard';
 import EmailAction from './EmailAction';
-import { FaInstagram, FaFacebook, FaLinkedin, FaWhatsapp } from 'react-icons/fa';
 import EmailVerified from './EmailVerified';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsOfService from './pages/TermsOfService';
+import { FaInstagram, FaFacebook, FaLinkedin, FaWhatsapp } from 'react-icons/fa';
 
 const SERIF = "'Cormorant Garamond', serif";
 const SANS = "'Outfit', sans-serif";
+
 const socialLinks = [
   { label: 'Instagram', href: 'https://www.instagram.com/alphaaccountingandtax/', icon: FaInstagram, hoverColor: '#E1306C' },
   { label: 'Facebook', href: 'https://www.facebook.com/people/Alpha-Accounting-and-Tax/100090563133568/', icon: FaFacebook, hoverColor: '#1877F2' },
@@ -78,9 +81,8 @@ function Footer({ onNavigate }) {
         <div className="border-t border-gray-800 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-gray-500 text-xs" style={{ fontFamily: SANS }}>&copy; {new Date().getFullYear()} Alpha Accounting &amp; Tax. All rights reserved.</p>
           <div className="flex gap-6">
-            {["Privacy Policy", "Terms of Service", "Sitemap"].map((link) => (
-              <a key={link} href="#" className="text-gray-500 text-xs hover:text-gray-300 transition-colors" style={{ fontFamily: SANS }}>{link}</a>
-            ))}
+            <button onClick={() => onNavigate('privacy')} className="text-gray-500 text-xs hover:text-gray-300 transition-colors" style={{ fontFamily: SANS }}>Privacy Policy</button>
+            <button onClick={() => onNavigate('terms')} className="text-gray-500 text-xs hover:text-gray-300 transition-colors" style={{ fontFamily: SANS }}>Terms of Service</button>
           </div>
         </div>
       </div>
@@ -126,6 +128,7 @@ export default function App() {
   if (page === 'forgot-password') return <ForgotPassword onNavigate={navigate} />;
   if (page === 'client-dashboard') return <ClientDashboard onNavigate={navigate} />;
   if (page === 'admin-dashboard') return <AdminDashboard onNavigate={navigate} />;
+  if (page === 'privacy') return <PrivacyPolicy onNavigate={navigate} />;
+  if (page === 'terms') return <TermsOfService onNavigate={navigate} />;
   return <HomePage onNavigate={navigate} />;
 }
-
