@@ -80,7 +80,7 @@ function VerifyEmailScreen({ email, password, onNavigate }) {
             style={{ backgroundColor: '#C8102E', fontFamily: "'DM Sans', sans-serif" }}
             onMouseEnter={e => { e.currentTarget.style.backgroundColor = '#a50d25'; }}
             onMouseLeave={e => { e.currentTarget.style.backgroundColor = '#C8102E'; }}>
-            {signingIn ? 'Signing in...' : 'I have verified — Sign In'}
+            {signingIn ? 'Signing in...' : 'I have verified'}
           </button>
           <button onClick={handleResend} disabled={resending || signingIn}
             className="w-full py-3 rounded-xl text-sm font-medium text-gray-600 bg-gray-100 hover:bg-gray-200 transition-colors disabled:opacity-60"
