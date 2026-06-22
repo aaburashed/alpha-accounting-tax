@@ -71,7 +71,7 @@ function Footer({ onNavigate }) {
           <div>
             <h4 className="text-white font-semibold text-sm mb-4" style={{ fontFamily: SERIF, fontSize: '16px' }}>Contact</h4>
             <ul className="flex flex-col gap-2 text-gray-400 text-sm" style={{ fontFamily: SANS }}>
-              <li><a href="tel:+16572066251" className="hover:text-white transition-colors">+1 (657) 206-6251</a></li>
+              <li><a href="tel:+19494442271" className="hover:text-white transition-colors">+1 (949) 444-2271</a></li>
               <li><a href="mailto:info@alphaaccountingandtax.com" className="hover:text-white transition-colors">info@alphaaccountingandtax.com</a></li>
               <li>Office Location: California</li>
               <li>Remote Services Available</li>
