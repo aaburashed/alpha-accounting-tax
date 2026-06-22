@@ -38,7 +38,7 @@ export default function BookkeepingPackages({ onNavigate }) {
       <div className="bg-red-700 text-white text-sm py-2 px-6 flex justify-between items-center">
         <div className="flex items-center gap-2">
           <FiPhone className="text-red-200" size={13} />
-          <span style={{ fontFamily: "'DM Sans', sans-serif" }}>Free Consultation: <a href="tel:+16572066251" className="font-semibold hover:underline">+1 (657) 206-6251</a> &nbsp;|&nbsp; Mon–Fri 8am–6pm</span>
+          <span style={{ fontFamily: "'DM Sans', sans-serif" }}>Free Consultation: <a href="tel:+19494442271" className="font-semibold hover:underline">+1 (949) 444-2271</a> &nbsp;|&nbsp; Mon–Fri 8am–6pm</span>
         </div>
         <a href="mailto:info@alphaaccountingandtax.com" className="hidden sm:flex items-center gap-1.5 text-red-200 hover:text-white transition-colors" style={{ fontFamily: "'DM Sans', sans-serif" }}><FiMail size={13} />info@alphaaccountingandtax.com</a>
       </div>
@@ -46,7 +46,7 @@ export default function BookkeepingPackages({ onNavigate }) {
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-16">
           <button onClick={goHome} className="flex items-center gap-2 text-gray-500 hover:text-red-700 transition-colors text-sm font-medium" style={{ fontFamily: "'DM Sans', sans-serif" }}><FiArrowLeft size={16} />Back to Home</button>
           <BookkeepingLogo />
-          <a href="tel:+16572066251" className="hidden sm:inline-flex items-center gap-2 text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition-colors duration-200" style={{ backgroundColor: '#C8102E', fontFamily: "'DM Sans', sans-serif" }} onMouseEnter={e => e.currentTarget.style.backgroundColor = '#a50d25'} onMouseLeave={e => e.currentTarget.style.backgroundColor = '#C8102E'}><FiPhone size={14} />Call Now</a>
+          <a href="tel:+19494442271" className="hidden sm:inline-flex items-center gap-2 text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition-colors duration-200" style={{ backgroundColor: '#C8102E', fontFamily: "'DM Sans', sans-serif" }} onMouseEnter={e => e.currentTarget.style.backgroundColor = '#a50d25'} onMouseLeave={e => e.currentTarget.style.backgroundColor = '#C8102E'}><FiPhone size={14} />Call Now</a>
         </div>
       </nav>
       <section className="bg-white flex flex-col items-center justify-center" style={{ minHeight: '480px' }}>
