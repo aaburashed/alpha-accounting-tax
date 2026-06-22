@@ -7,7 +7,7 @@ const SANS = "'Outfit', sans-serif";
 const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mrevbepo';
 
 const contactInfo = [
-  { icon: FiPhone, label: "Phone", value: "+1 (657) 206-6251", sub: "Mon to Fri, 8am to 6pm PST", href: "tel:+16572066251" },
+  { icon: FiPhone, label: "Phone", value: "+1 (949) 444-2271", sub: "Mon to Fri, 8am to 6pm PST", href: "tel:+19494442271" },
   { icon: FiMail, label: "Email", value: "info@alphaaccountingandtax.com", sub: "We reply within 1 business day", href: "mailto:info@alphaaccountingandtax.com" },
   { icon: FiMapPin, label: "Office Location", value: "California", sub: "Remote Services Available Nationwide", href: null },
   { icon: FiClock, label: "Hours", value: "Mon to Fri: 8am to 6pm", sub: "Sat: 9am to 2pm (Tax Season)", href: null },
