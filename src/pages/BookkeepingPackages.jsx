@@ -9,9 +9,9 @@ const packages = [
 
 const faqs = [
   { q: "What software do you use for bookkeeping?", a: "We primarily use QuickBooks Online, but we can work with Xero, Wave, or your existing software. Setup and migration are included." },
-  { q: "Do I need to send you anything each month?", a: "We connect directly to your bank and credit card accounts. You'll just need to respond to any clarifying questions — usually just a few minutes each month." },
+  { q: "Do I need to send you anything each month?", a: "We connect directly to your bank and credit card accounts. You'll just need to respond to any clarifying questions, usually just a few minutes each month." },
   { q: "Can I switch plans as my business grows?", a: "Absolutely. You can upgrade or downgrade at any time. Changes take effect on your next billing cycle." },
-  { q: "Is there a setup fee?", a: "No setup fees. We handle onboarding, account setup, and historical cleanup as part of your first month." },
+  { q: "Is there a setup fee?", a: "No setup fees. We handle onboarding and account setup as part of your first month." },
 ];
 
 function BookkeepingLogo() {
@@ -38,7 +38,7 @@ export default function BookkeepingPackages({ onNavigate }) {
       <div className="bg-red-700 text-white text-sm py-2 px-6 flex justify-between items-center">
         <div className="flex items-center gap-2">
           <FiPhone className="text-red-200" size={13} />
-          <span style={{ fontFamily: "'DM Sans', sans-serif" }}>Free Consultation: <a href="tel:+19494442271" className="font-semibold hover:underline">+1 (949) 444-2271</a> &nbsp;|&nbsp; Mon–Fri 8am–6pm</span>
+          <span style={{ fontFamily: "'DM Sans', sans-serif" }}>Free Consultation: <a href="tel:+19494442271" className="font-semibold hover:underline">+1 (949) 444-2271</a> &nbsp;|&nbsp; Mon to Fri 8am to 6pm</span>
         </div>
         <a href="mailto:info@alphaaccountingandtax.com" className="hidden sm:flex items-center gap-1.5 text-red-200 hover:text-white transition-colors" style={{ fontFamily: "'DM Sans', sans-serif" }}><FiMail size={13} />info@alphaaccountingandtax.com</a>
       </div>
