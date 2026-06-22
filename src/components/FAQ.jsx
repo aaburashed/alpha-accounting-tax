@@ -58,7 +58,7 @@ export default function FAQ() {
           </h2>
           <p className="text-gray-500 text-lg mb-5" style={{ fontFamily: SANS }}>
             Have more questions? Call us at{' '}
-            <a href="tel:+16572066251" className="font-semibold hover:underline" style={{ color: '#B22222' }}>+1 (657) 206-6251</a>
+            <a href="tel:+19494442271" className="font-semibold hover:underline" style={{ color: '#B22222' }}>+1 (949) 444-2271</a>
             {' '}and we would be happy to help.
           </p>
           <div className="flex items-center justify-center gap-2 flex-wrap">
